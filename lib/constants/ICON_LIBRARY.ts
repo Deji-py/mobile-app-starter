@@ -1,4 +1,5 @@
 import iconsize from "@/styles/icons";
+import Feather from "@expo/vector-icons/Feather";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -8,6 +9,7 @@ export const ICON_COMPONENTS = {
   Ionicons,
   MaterialIcons,
   FontAwesome,
+  Feather,
 } as const;
 
 // Icon Type map
@@ -15,6 +17,7 @@ export type IconNameMap = {
   Ionicons: keyof typeof Ionicons.glyphMap;
   MaterialIcons: keyof typeof MaterialIcons.glyphMap;
   FontAwesome: keyof typeof FontAwesome.glyphMap;
+  Feather: keyof typeof Feather.glyphMap;
 };
 
 export type IconType = keyof typeof ICON_COMPONENTS;
@@ -40,6 +43,13 @@ export type IconProps =
   | {
       iconType: "MaterialIcons";
       name: IconNameMap["MaterialIcons"];
+      size?: keyof typeof iconsize;
+      color?: string;
+      style?: StyleProp<ViewStyle>;
+    }
+  | {
+      iconType: "Feather";
+      name: IconNameMap["Feather"];
       size?: keyof typeof iconsize;
       color?: string;
       style?: StyleProp<ViewStyle>;

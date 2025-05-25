@@ -1,12 +1,8 @@
+import SignupForm from "@/features/auth/signup/SignupForm";
 import React from "react";
-import { Text, View } from "react-native";
 
 const Signup = () => {
-  return (
-    <View>
-      <Text>Signup</Text>
-    </View>
-  );
+  return <SignupForm />;
 };
 
 export default Signup;

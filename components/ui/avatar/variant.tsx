@@ -7,6 +7,7 @@ const avatarStyles = StyleSheet.create(({ colors, radius }) => ({
   },
   image: {
     backgroundColor: colors.swatches?.gray?.[100],
+
     variants: {
       size: {
         sm: {
@@ -20,6 +21,14 @@ const avatarStyles = StyleSheet.create(({ colors, radius }) => ({
         lg: {
           width: 72,
           height: 72,
+        },
+        xlg: {
+          width: 84,
+          height: 84,
+        },
+        xxlg: {
+          width: 100,
+          height: 100,
         },
         xs: {
           width: 28,

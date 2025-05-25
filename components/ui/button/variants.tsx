@@ -48,6 +48,11 @@ const buttonStyles = StyleSheet.create(
             backgroundColor: "transparent",
           },
         },
+        disabled: {
+          true: {
+            opacity: 0.5,
+          },
+        },
       },
     },
     btnText: {

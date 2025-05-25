@@ -10,7 +10,14 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: theme.colors.primary,
-        tabBarInactiveTintColor: "#000",
+        tabBarInactiveTintColor: theme.colors.text,
+        tabBarStyle: {
+          backgroundColor: theme.colors.background,
+          borderColor: "transparent",
+          shadowOpacity: 0,
+        },
+
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarIconStyle: {
           marginTop: 5,
@@ -18,7 +25,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="index"
         options={{
           title: "home",
           tabBarIcon: ({ color }) => (

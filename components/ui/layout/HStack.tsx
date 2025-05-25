@@ -8,6 +8,7 @@ interface HStackProps {
   justify?: ViewStyle["justifyContent"];
   children: React.ReactNode;
   style?: ViewStyle;
+  flexItem?: number;
 }
 
 const HStack: React.FC<HStackProps> = ({
@@ -16,6 +17,7 @@ const HStack: React.FC<HStackProps> = ({
   justify = "flex-start",
   children,
   style,
+  flexItem = 0,
 }) => {
   const childrenArray = React.Children.toArray(children);
 
@@ -35,7 +37,7 @@ const HStack: React.FC<HStackProps> = ({
           key={index}
           style={{
             marginRight: index !== childrenArray.length - 1 ? spacing : 0,
-            flex: 1,
+            flex: flexItem,
           }}
         >
           {child}

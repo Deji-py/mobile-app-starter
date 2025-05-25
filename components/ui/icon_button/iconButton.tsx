@@ -11,7 +11,7 @@ import { StyleSheet, UnistylesRuntime } from "react-native-unistyles";
 interface IconButtonProps<T extends IconType> {
   iconType: T;
   name: IconNameMap[T];
-  onPress: () => void;
+  onPress?: () => void;
   size?: keyof typeof iconsize;
   color?: string;
   style?: StyleProp<ViewStyle>;

@@ -1,8 +1,7 @@
 import IconButton from "@/components/ui/icon_button/iconButton";
-import spacing from "@/styles/spacing";
 import { Image } from "expo-image";
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet, UnistylesRuntime } from "react-native-unistyles";
 
@@ -53,16 +52,7 @@ const LoginLayout = () => {
         </View>
 
         <View style={styles.footer}>
-          {!isLoginScreen ? (
-            <>
-              <Text style={styles.footerText}>Don't have an account?</Text>
-              <TouchableOpacity style={{ marginLeft: spacing.sm }}>
-                <Text style={styles.footerActionText}>Signup</Text>
-              </TouchableOpacity>
-            </>
-          ) : (
-            <Text style={styles.footerText}> terms and privacy </Text>
-          )}
+          <Text style={styles.footerText}> terms and privacy </Text>
         </View>
       </SafeAreaView>
     </View>

@@ -1,4 +1,4 @@
-import AccountSwitcher from "@/features/auth/login/components/AccountSwitcher";
+import AccountSwitcher from "@/features/auth/login/AccountSwitcher";
 import { useRouter } from "expo-router";
 import React from "react";
 
