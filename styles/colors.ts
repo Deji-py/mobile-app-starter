@@ -45,7 +45,7 @@ const swatches: Swatches = {
 
 // Define the AppColors object, including swatches
 const appColors: AppColors = {
-  primary: "#3797EF",
+  primary: "#1877F2",
   secondary: "#602350",
   background: "#FFFFFF",
   text: "#000000",

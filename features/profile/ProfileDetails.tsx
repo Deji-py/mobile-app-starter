@@ -4,7 +4,6 @@ import Card from "@/components/ui/layout/Card";
 import GridStack from "@/components/ui/layout/GridStack";
 import HStack from "@/components/ui/layout/HStack";
 import VStack from "@/components/ui/layout/VStack";
-import { useAuth } from "@/context/authProvider";
 import { screenWidth } from "@/lib/constants/dimention";
 import iconsize from "@/styles/icons";
 import spacing from "@/styles/spacing";
@@ -12,7 +11,9 @@ import typography from "@/styles/typography";
 import Feather from "@expo/vector-icons/Feather";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import { StyleSheet, UnistylesRuntime } from "react-native-unistyles";
+import useProfile from "./hooks/useProfile";
 
 const stats = [
   {
@@ -31,7 +32,7 @@ const stats = [
 
 const ProfileDetails = () => {
   const theme = UnistylesRuntime.getTheme();
-  const { session } = useAuth();
+  const { profile, isProfileLoading } = useProfile();
   return (
     <View style={{ paddingHorizontal: spacing.xs }}>
       <Card style={{ borderWidth: 0 }}>
@@ -56,7 +57,18 @@ const ProfileDetails = () => {
                 <Text
                   style={[typography.body, { fontWeight: "700" }, styles.text]}
                 >
-                  John Doe
+                  {isProfileLoading ? (
+                    <SkeletonPlaceholder.Item
+                      width={120}
+                      height={20}
+                      backgroundColor={"#E1E9EE"}
+                      borderRadius={999}
+                    />
+                  ) : (
+                    <React.Fragment>
+                      {profile?.firstname} {profile?.lastname}
+                    </React.Fragment>
+                  )}
                 </Text>
                 <GridStack columns={3}>
                   {stats.map((item, index) => (

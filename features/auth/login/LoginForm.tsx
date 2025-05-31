@@ -85,7 +85,7 @@ const LoginForm = () => {
             iconType: "Ionicons",
             name: "logo-facebook",
             size: "md",
-            color: theme.colors.primary,
+            color: "#1877F2",
           }}
           title="Login with Facebook"
           variant="ghost"

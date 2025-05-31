@@ -4,6 +4,7 @@ import { SignupWithEmailPayload } from "@/features/auth/api/signupUser";
 import { VerifyOTPPayload } from "@/features/auth/api/verifyOTP";
 import useAuthenticate from "@/features/auth/hooks/useAuthenticate";
 import { EMAIL_NOT_VERIFIED_ERROR_MESSAGE } from "@/lib/constants/errorMessages";
+import { SESSION_KEY } from "@/lib/constants/misc";
 import { storage } from "@/services/mmkvConfig";
 import { Session } from "@/types/auth";
 import { SplashScreen, useRouter } from "expo-router";
@@ -33,12 +34,12 @@ type AuthType = {
 };
 
 const AuthContext = createContext<AuthType | undefined>(undefined);
-const SESSION_KEY = "user";
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [isReady, setIsReady] = useState(false);
-  const { loginWithEmail, signupWithEmail, verifyotp } = useAuthenticate();
+  const { loginWithEmail, signupWithEmail, verifyotp, logoutUser } =
+    useAuthenticate();
   const router = useRouter();
 
   const storeAuthState = (data: Session | null) => {
@@ -111,7 +112,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       });
       setSession(data);
       storeAuthState(data);
-      router.replace("/");
+      router.replace("/update-profile");
     } catch (error: any) {
       console.log(error);
       Toast.show({
@@ -121,9 +122,22 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   const logout = async () => {
-    setSession(null);
-    storeAuthState(null);
-    router.replace("/login");
+    try {
+      // await logoutUser.mutateAsync();
+      setSession(null);
+      storeAuthState(null);
+      router.replace("/login");
+      Toast.show({
+        type: "success",
+        text1: "Logout Sucessful",
+      });
+    } catch (error: any) {
+      console.log(error);
+      Toast.show({
+        type: "error",
+        text1: error?.message || "Error Logging out ",
+      });
+    }
   };
 
   const handleFetchSessionFromStorage = () => {
